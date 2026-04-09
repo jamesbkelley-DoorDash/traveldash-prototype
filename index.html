@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TravelDash — Concept Screens</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dd-red: #FF3008;
+  --dd-black: #191919;
+  --dd-gray-700: #6B6B6B;
+  --dd-gray-500: #9B9B9B;
+  --dd-gray-300: #D4D4D4;
+  --dd-gray-100: #F0F0F0;
+  --dd-white: #FFFFFF;
+  --dd-green: #00A651;
+  --dd-green-light: #E6F7ED;
+  --dd-blue: #0070E0;
+  --dd-blue-light: #E6F0FA;
+  --dd-orange: #FF8C00;
+  --dd-orange-light: #FFF3E0;
+  --phone-w: 375px;
+  --phone-h: 812px;
+  --phone-radius: 44px;
+  --travel-purple: #7B2FBE;
+  --travel-purple-light: #F3EBFA;
+  --travel-gradient: linear-gradient(135deg, #7B2FBE 0%, #FF3008 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #0D0D0D;
+  color: var(--dd-white);
+  overflow-x: hidden;
+}
+
+.hero {
+  padding: 60px 40px 30px;
+  text-align: center;
+  background: linear-gradient(180deg, #1a0a2e 0%, #0D0D0D 100%);
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 700;
+  background: var(--travel-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+.hero .subtitle {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  color: var(--dd-gray-500);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.flow-nav {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 20px 20px 40px;
+  flex-wrap: wrap;
+}
+.flow-btn {
+  padding: 8px 18px;
+  border-radius: 100px;
+  border: 1px solid var(--dd-gray-700);
+  background: transparent;
+  color: var(--dd-gray-300);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.flow-btn:hover { border-color: var(--travel-purple); color: var(--dd-white); }
+.flow-btn.active {
+  background: var(--travel-purple);
+  border-color: var(--travel-purple);
+  color: var(--dd-white);
+}
+
+.stage {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  padding: 0 40px 60px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.phone-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.phone-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--dd-gray-500);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.phone {
+  width: var(--phone-w);
+  height: var(--phone-h);
+  border-radius: var(--phone-radius);
+  background: var(--dd-white);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 3px #333, 0 20px 60px rgba(123,47,190,0.15);
+}
+.phone .notch {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 160px; height: 34px;
+  background: var(--dd-black);
+  border-radius: 0 0 20px 20px;
+  z-index: 100;
+}
+.phone .status-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50px;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 28px 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dd-black);
+}
+.phone .status-bar.light { color: var(--dd-white); }
+
+.screen {
+  width: 100%; height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #E8E4DF;
+  background-image:
+    linear-gradient(rgba(200,195,188,0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,195,188,0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.map-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    linear-gradient(135deg, rgba(180,200,180,0.2) 0%, transparent 40%),
+    linear-gradient(300deg, rgba(180,190,210,0.15) 0%, transparent 50%);
+}
+.map-road {
+  position: absolute;
+  background: var(--dd-white);
+  border-radius: 2px;
+}
+.map-road.h { height: 6px; }
+.map-road.v { width: 6px; }
+.map-road.highway { background: #FFE0A0; height: 8px; }
+
+.corridor {
+  position: absolute;
+  z-index: 5;
+  background: rgba(123, 47, 190, 0.08);
+  border: 2px dashed rgba(123, 47, 190, 0.25);
+  border-radius: 40px;
+}
+
+.marker {
+  position: absolute;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.marker .dot {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 3px solid var(--dd-white);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.marker .label {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--dd-black);
+  background: var(--dd-white);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  white-space: nowrap;
+}
+.marker .dot.current { background: var(--dd-blue); }
+.marker .dot.destination { background: var(--dd-black); }
+.marker .dot.store { background: var(--dd-red); }
+.marker .dot.dropoff { background: var(--dd-green); }
+
+.bottom-sheet {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: var(--dd-white);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 30;
+  padding: 12px 20px 34px;
+}
+.sheet-handle {
+  width: 36px; height: 4px;
+  background: var(--dd-gray-300);
+  border-radius: 2px;
+  margin: 0 auto 16px;
+}
+
+.mode-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.mode-tab {
+  flex: 1;
+  padding: 10px 8px;
+  border-radius: 12px;
+  border: 1.5px solid var(--dd-gray-300);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dd-gray-700);
+  background: var(--dd-white);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.mode-tab.active-offer {
+  border-color: var(--dd-red);
+  color: var(--dd-red);
+  background: #FFF5F3;
+}
+.mode-tab.active-time {
+  border-color: var(--dd-blue);
+  color: var(--dd-blue);
+  background: var(--dd-blue-light);
+}
+.mode-tab.active-travel {
+  border-color: var(--travel-purple);
+  color: var(--travel-purple);
+  background: var(--travel-purple-light);
+  border-width: 2px;
+  box-shadow: 0 0 0 2px rgba(123,47,190,0.15);
+}
+.mode-tab .mode-icon {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.cta-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 14px;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dd-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.cta-btn.red { background: var(--dd-red); }
+.cta-btn.purple { background: var(--travel-purple); }
+.cta-btn.green { background: var(--dd-green); }
+.cta-btn.dark { background: var(--dd-black); }
+
+.setup-section { margin-bottom: 16px; }
+.setup-section .section-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--dd-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.destination-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--dd-gray-100);
+  border-radius: 12px;
+  font-size: 14px;
+  color: var(--dd-black);
+  font-weight: 500;
+}
+.destination-input .icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.destination-input .icon.home { background: var(--dd-blue-light); }
+
+.tolerance-pills {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+}
+.t-pill {
+  flex: 1;
+  padding: 10px 6px;
+  border-radius: 10px;
+  border: 1.5px solid var(--dd-gray-300);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dd-gray-700);
+  background: var(--dd-white);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.t-pill.selected {
+  border-color: var(--travel-purple);
+  background: var(--travel-purple-light);
+  color: var(--travel-purple);
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--dd-gray-100);
+  font-size: 13px;
+  color: var(--dd-gray-700);
+}
+.info-row .value {
+  font-weight: 600;
+  color: var(--dd-black);
+}
+
+.earnings-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--dd-black);
+  color: var(--dd-white);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  position: absolute;
+  top: 60px; left: 16px;
+  z-index: 40;
+}
+.earnings-pill .amount { color: var(--dd-green); }
+
+.order-card {
+  background: var(--dd-white);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 30;
+  animation: slideUp 0.4s ease-out;
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.order-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.store-avatar {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--dd-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--dd-white);
+}
+.store-info .name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dd-black);
+}
+.store-info .detail {
+  font-size: 12px;
+  color: var(--dd-gray-500);
+}
+.order-metrics {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.metric-chip {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+.metric-chip .metric-value {
+  font-size: 18px;
+  font-weight: 700;
+}
+.metric-chip .metric-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+.metric-chip.pay { background: var(--dd-green-light); }
+.metric-chip.pay .metric-value { color: var(--dd-green); }
+.metric-chip.pay .metric-label { color: #00713A; }
+.metric-chip.time { background: var(--travel-purple-light); }
+.metric-chip.time .metric-value { color: var(--travel-purple); }
+.metric-chip.time .metric-label { color: #5A1F8E; }
+.metric-chip.dist { background: var(--dd-gray-100); }
+.metric-chip.dist .metric-value { color: var(--dd-black); }
+.metric-chip.dist .metric-label { color: var(--dd-gray-700); }
+
+.order-actions {
+  display: flex;
+  gap: 10px;
+}
+.order-actions .cta-btn { flex: 1; padding: 14px; font-size: 15px; }
+.order-actions .skip-btn {
+  background: var(--dd-gray-100);
+  color: var(--dd-black);
+}
+
+.route-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--travel-purple-light);
+  color: var(--travel-purple);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.delivery-status {
+  position: absolute;
+  top: 54px; left: 0; right: 0;
+  z-index: 40;
+  padding: 6px 16px;
+}
+.status-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--travel-purple);
+  color: var(--dd-white);
+  padding: 10px 16px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(123,47,190,0.3);
+}
+.status-chip .pulse {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #A5FF7A;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+.summary-screen {
+  background: var(--dd-white);
+  padding: 60px 24px 34px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.summary-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.summary-header .check {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: var(--dd-green-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 12px;
+}
+.summary-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dd-black);
+}
+.summary-header p {
+  font-size: 13px;
+  color: var(--dd-gray-500);
+  margin-top: 4px;
+}
+.summary-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.stat-card {
+  padding: 16px;
+  border-radius: 14px;
+  text-align: center;
+}
+.stat-card .stat-value {
+  font-size: 26px;
+  font-weight: 700;
+}
+.stat-card .stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+.stat-card.earned { background: var(--dd-green-light); }
+.stat-card.earned .stat-value { color: var(--dd-green); }
+.stat-card.earned .stat-label { color: #00713A; }
+.stat-card.deliveries { background: var(--travel-purple-light); }
+.stat-card.deliveries .stat-value { color: var(--travel-purple); }
+.stat-card.deliveries .stat-label { color: #5A1F8E; }
+.stat-card.time-saved { background: var(--dd-blue-light); }
+.stat-card.time-saved .stat-value { color: var(--dd-blue); }
+.stat-card.time-saved .stat-label { color: #004F9E; }
+.stat-card.efficiency { background: var(--dd-orange-light); }
+.stat-card.efficiency .stat-value { color: var(--dd-orange); }
+.stat-card.efficiency .stat-label { color: #B36200; }
+
+.summary-detail {
+  background: var(--dd-gray-100);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.summary-detail .detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 13px;
+  color: var(--dd-gray-700);
+}
+.summary-detail .detail-row .val {
+  font-weight: 600;
+  color: var(--dd-black);
+}
+.summary-cta { margin-top: auto; }
+
+.tab-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: var(--dd-white);
+  border-top: 1px solid var(--dd-gray-100);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 20px;
+  z-index: 35;
+}
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  color: var(--dd-gray-500);
+  font-weight: 500;
+}
+.tab-item.active { color: var(--dd-red); }
+.tab-item .tab-icon { font-size: 20px; }
+
+.desc-panel {
+  max-width: 320px;
+  padding: 20px 0;
+}
+.desc-panel h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dd-white);
+  margin-bottom: 8px;
+}
+.desc-panel p {
+  font-size: 13px;
+  color: var(--dd-gray-500);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.desc-panel .design-note {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--travel-purple);
+  border-left: 2px solid var(--travel-purple);
+  padding-left: 10px;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+.flow-section { display: none; }
+.flow-section.active { display: flex; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>TravelDash</h1>
+  <div class="subtitle">Earning Along the Way &mdash; Concept Screens</div>
+</div>
+
+<div class="flow-nav">
+  <button class="flow-btn active" onclick="showFlow('homescreen', this)">1. Homescreen</button>
+  <button class="flow-btn" onclick="showFlow('setup', this)">2. Setup</button>
+  <button class="flow-btn" onclick="showFlow('scanning', this)">3. Scanning</button>
+  <button class="flow-btn" onclick="showFlow('offer', this)">4. Order Match</button>
+  <button class="flow-btn" onclick="showFlow('delivering', this)">5. Delivering</button>
+  <button class="flow-btn" onclick="showFlow('summary', this)">6. Trip Summary</button>
+</div>
+
+<!-- FLOW 1: HOMESCREEN -->
+<div class="stage flow-section active" id="flow-homescreen">
+  <div class="phone-wrap">
+    <div class="phone-label">Homescreen &mdash; Mode Selection</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="status-bar"><span>9:41</span><span></span></div>
+      <div class="screen">
+        <div class="map-bg">
+          <div class="map-road h" style="top:180px;left:0;width:100%"></div>
+          <div class="map-road h" style="top:320px;left:0;width:100%"></div>
+          <div class="map-road h" style="top:420px;left:0;width:70%"></div>
+          <div class="map-road v" style="top:0;left:120px;height:100%"></div>
+          <div class="map-road v" style="top:0;left:260px;height:100%"></div>
+          <div class="map-road highway" style="top:250px;left:0;width:100%;transform:rotate(-8deg)"></div>
+        </div>
+        <div class="earnings-pill">Today: <span class="amount">&nbsp;$47.50</span></div>
+        <div class="marker" style="top:280px;left:170px">
+          <div class="dot current"></div>
+          <div class="label">You</div>
+        </div>
+        <div class="bottom-sheet" style="height: 310px">
+          <div class="sheet-handle"></div>
+          <div style="font-size:16px;font-weight:700;color:var(--dd-black);margin-bottom:14px">How do you want to earn?</div>
+          <div class="mode-tabs">
+            <div class="mode-tab active-offer">
+              <span class="mode-icon">&#x1F4E6;</span>Offer
+            </div>
+            <div class="mode-tab active-time">
+              <span class="mode-icon">&#x23F1;</span>By Time
+            </div>
+            <div class="mode-tab active-travel">
+              <span class="mode-icon">&#x1F697;</span>TravelDash
+            </div>
+          </div>
+          <div style="background:var(--travel-purple-light);border-radius:12px;padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:10px">
+            <div style="font-size:24px">&#x1F4A1;</div>
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--travel-purple)">Earn on your drive</div>
+              <div style="font-size:11px;color:var(--dd-gray-700);margin-top:2px">Pick up deliveries along your route. Set a destination and time limit.</div>
+            </div>
+          </div>
+          <button class="cta-btn purple">Set up TravelDash &rarr;</button>
+        </div>
+        <div class="tab-bar">
+          <div class="tab-item active"><span class="tab-icon">&#x1F3E0;</span>Home</div>
+          <div class="tab-item"><span class="tab-icon">&#x1F4B0;</span>Earnings</div>
+          <div class="tab-item"><span class="tab-icon">&#x2B50;</span>Ratings</div>
+          <div class="tab-item"><span class="tab-icon">&#x1F464;</span>Account</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="desc-panel">
+    <h3>Third mode, same homescreen</h3>
+    <p>TravelDash lives alongside Offer and By Time as a third earning mode in the bottom sheet. The mode selector uses the same tab pattern Dashers already know from Monarch.</p>
+    <p>The purple accent distinguishes TravelDash from Offer (red) and By Time (blue), signaling it's a different kind of earning.</p>
+    <div class="design-note">DESIGN NOTE: Uses existing Monarch bottom-sheet pattern. Mode tabs match the Dash-Panel component spec from RFC 2027. TravelDash doesn't replace anything &mdash; it adds a third option.</div>
+    <div class="design-note" style="margin-top:8px">PRIOR ART: "Dash Along the Way" (2023) and "End of Dash Destination" tested similar concepts with positive signals. TravelDash extends both into a full mode.</div>
+  </div>
+</div>
+
+<!-- FLOW 2: SETUP -->
+<div class="stage flow-section" id="flow-setup">
+  <div class="phone-wrap">
+    <div class="phone-label">TravelDash Setup</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="status-bar"><span>9:41</span><span></span></div>
+      <div class="screen">
+        <div class="map-bg">
+          <div class="map-road h" style="top:180px;left:0;width:100%"></div>
+          <div class="map-road h" style="top:320px;left:0;width:100%"></div>
+          <div class="map-road v" style="top:0;left:120px;height:100%"></div>
+          <div class="map-road v" style="top:0;left:260px;height:100%"></div>
+        </div>
+        <svg style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:10" viewBox="0 0 375 812">
+          <path d="M180 400 Q200 350 220 280 Q240 220 260 170 Q280 130 310 100" stroke="#7B2FBE" stroke-width="4" fill="none" stroke-dasharray="8 4" opacity="0.6"/>
+        </svg>
+        <div class="corridor" style="top:80px;left:140px;width:200px;height:350px;transform:rotate(-15deg)"></div>
+        <div class="marker" style="top:385px;left:165px">
+          <div class="dot current"></div>
+          <div class="label">You</div>
+        </div>
+        <div class="marker" style="top:80px;left:290px">
+          <div class="dot destination"></div>
+          <div class="label">Home</div>
+        </div>
+        <div class="bottom-sheet" style="height:420px">
+          <div class="sheet-handle"></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
+            <div style="font-size:20px">&#x1F697;</div>
+            <div style="font-size:17px;font-weight:700;color:var(--dd-black)">Set up your drive</div>
+          </div>
+          <div class="setup-section">
+            <div class="section-label">Where are you going?</div>
+            <div class="destination-input">
+              <div class="icon home">&#x1F3E0;</div>
+              <div>
+                <div style="font-weight:600;color:var(--dd-black)">Home</div>
+                <div style="font-size:11px;color:var(--dd-gray-500)">123 Oak St &bull; 42 min away</div>
+              </div>
+              <div style="margin-left:auto;color:var(--dd-gray-500);font-size:18px">&#x276F;</div>
+            </div>
+          </div>
+          <div class="setup-section">
+            <div class="section-label">Max time added per delivery</div>
+            <div class="tolerance-pills">
+              <div class="t-pill">5 min</div>
+              <div class="t-pill selected">10 min</div>
+              <div class="t-pill">15 min</div>
+              <div class="t-pill">20 min</div>
+            </div>
+          </div>
+          <div class="setup-section">
+            <div class="info-row">
+              <span>Estimated trip time</span>
+              <span class="value">42 min</span>
+            </div>
+            <div class="info-row">
+              <span>Potential deliveries along route</span>
+              <span class="value" style="color:var(--travel-purple)">3&ndash;5</span>
+            </div>
+            <div class="info-row" style="border:none">
+              <span>Max added time total</span>
+              <span class="value">+30&ndash;50 min</span>
+            </div>
+          </div>
+          <button class="cta-btn purple">&#x1F697;&nbsp; Start TravelDash</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="desc-panel">
+    <h3>Two decisions, that's it</h3>
+    <p><strong>Where are you going?</strong> Pick from saved places (Home, Work) or search. The map previews your route with a purple corridor showing the delivery matching zone.</p>
+    <p><strong>How much time can you spare?</strong> Pill selector for time tolerance per delivery. Simple, no math. The system estimates how many deliveries might match along your route.</p>
+    <p>The key insight: we show "Potential deliveries along route" so the Dasher has realistic expectations before starting. If the route has low density, they see "0&ndash;1" and can decide it's not worth it.</p>
+    <div class="design-note">DESIGN NOTE: The purple corridor on the map is the matching zone &mdash; any store/delivery pair within this corridor that fits the time budget becomes a candidate. Wider tolerance = wider corridor.</div>
+    <div class="design-note" style="margin-top:8px">The time tolerance selector avoids Van Westendorp complexity. Research should validate whether 5/10/15/20 are the right increments or if a continuous slider is better.</div>
+  </div>
+</div>
+
+<!-- FLOW 3: SCANNING -->
+<div class="stage flow-section" id="flow-scanning">
+  <div class="phone-wrap">
+    <div class="phone-label">Scanning for Matches</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="status-bar light"><span>9:43</span><span></span></div>
+      <div class="screen">
+        <div class="map-bg" style="background:#D5D0CA">
+          <div class="map-road h" style="top:180px;left:0;width:100%"></div>
+          <div class="map-road h" style="top:320px;left:0;width:100%"></div>
+          <div class="map-road h" style="top:480px;left:0;width:100%"></div>
+          <div class="map-road v" style="top:0;left:120px;height:100%"></div>
+          <div class="map-road v" style="top:0;left:260px;height:100%"></div>
+          <div class="map-road highway" style="top:280px;left:0;width:100%;transform:rotate(-12deg)"></div>
+        </div>
+        <svg style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:10" viewBox="0 0 375 812">
+          <path d="M170 520 Q190 450 210 380 Q230 310 250 260 Q270 210 300 160 Q320 120 340 80" stroke="#7B2FBE" stroke-width="5" fill="none" opacity="0.8"/>
+          <path d="M170 520 Q190 450 210 380 Q230 310 250 260 Q270 210 300 160 Q320 120 340 80" stroke="#7B2FBE" stroke-width="14" fill="none" opacity="0.1"/>
+        </svg>
+        <div class="corridor" style="top:50px;left:100px;width:280px;height:510px;transform:rotate(-12deg)"></div>
+        <div class="marker" style="top:500px;left:155px">
+          <div class="dot current" style="width:22px;height:22px;box-shadow:0 0 0 6px rgba(0,112,224,0.2),0 2px 8px rgba(0,0,0,0.2)"></div>
+        </div>
+        <div class="marker" style="top:60px;left:320px">
+          <div class="dot destination"></div>
+          <div class="label">Home</div>
+        </div>
+        <div class="marker" style="top:360px;left:195px">
+          <div class="dot store" style="width:12px;height:12px;opacity:0.5;border-width:2px"></div>
+        </div>
+        <div class="marker" style="top:280px;left:230px">
+          <div class="dot store" style="width:12px;height:12px;opacity:0.5;border-width:2px"></div>
+        </div>
+        <div class="marker" style="top:200px;left:275px">
+          <div class="dot store" style="width:12px;height:12px;opacity:0.5;border-width:2px"></div>
+        </div>
+        <div class="delivery-status">
+          <div class="status-chip">
+            <div class="pulse"></div>
+            TravelDash active &mdash; scanning your route
+          </div>
+        </div>
+        <div class="bottom-sheet" style="height:180px">
+          <div class="sheet-handle"></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+            <div>
+              <div style="font-size:14px;font-weight:700;color:var(--dd-black)">Driving to Home</div>
+              <div style="font-size:12px;color:var(--dd-gray-500)">38 min remaining &bull; 10 min tolerance</div>
+            </div>
+            <div style="background:var(--dd-red);color:white;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer">End</div>
+          </div>
+          <div style="display:flex;gap:12px">
+            <div style="flex:1;background:var(--dd-gray-100);border-radius:10px;padding:10px;text-align:center">
+              <div style="font-size:18px;font-weight:700;color:var(--travel-purple)">3</div>
+              <div style="font-size:10px;color:var(--dd-gray-500);font-weight:600">RESTAURANTS NEARBY</div>
+            </div>
+            <div style="flex:1;background:var(--dd-gray-100);border-radius:10px;padding:10px;text-align:center">
+              <div style="font-size:18px;font-weight:700;color:var(--dd-green)">$0</div>
+              <div style="font-size:10px;color:var(--dd-gray-500);font-weight:600">EARNED THIS TRIP</div>
+            </div>
+            <div style="flex:1;background:var(--dd-gray-100);border-radius:10px;padding:10px;text-align:center">
+              <div style="font-size:18px;font-weight:700;color:var(--dd-black)">0</div>
+              <div style="font-size:10px;color:var(--dd-gray-500);font-weight:600">DELIVERIES</div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-bar" style="z-index:40">
+          <div class="tab-item active"><span class="tab-icon">&#x1F3E0;</span>Home</div>
+          <div class="tab-item"><span class="tab-icon">&#x1F4B0;</span>Earnings</div>
+          <div class="tab-item"><span class="tab-icon">&#x2B50;</span>Ratings</div>
+          <div class="tab-item"><span class="tab-icon">&#x1F464;</span>Account</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="desc-panel">
+    <h3>Just drive. We'll find you.</h3>
+    <p>The Dasher drives toward their destination normally. The purple route line shows their path, and faded red dots represent restaurants the system is monitoring along the corridor.</p>
+    <p>The status chip at top provides ambient awareness: "TravelDash active &mdash; scanning your route." No action needed until a match appears.</p>
+    <p>The compact bottom sheet shows trip progress, nearby restaurant count, and running totals. The "End" button lets them go back to just driving at any time.</p>
+    <div class="design-note">DESIGN NOTE: This is the zero-commitment state. If no orders match, the Dasher just arrives at their destination. No wasted time, no frustration. This is what makes TravelDash fundamentally different from a shift.</div>
+  </div>
+</div>
+
+<!-- FLOW 4: ORDER MATCH -->
+<div class="stage flow-section" id="flow-offer">
+  <div class="phone-wrap">
+    <div class="phone-label">Route-Compatible Order</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="status-bar light"><span>9:47</span><span></span></div>
+      <div class="screen">
+        <div class="map-bg" style="background:#D5D0CA">
+          <div class="map-road h" style="top:200px;left:0;width:100%"></div>
+          <div class="map-road h" style="top:380px;left:0;width:100%"></div>
+          <div class="map-road v" style="top:0;left:140px;height:100%"></div>
+          <div class="map-road v" style="top:0;left:280px;height:100%"></div>
+        </div>
+        <svg style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:10" viewBox="0 0 375 812">
+          <path d="M160 460 Q180 380 210 300 Q240 230 280 170 Q310 120 340 80" stroke="#7B2FBE" stroke-width="3" fill="none" opacity="0.25" stroke-dasharray="6 4"/>
+          <path d="M160 460 Q170 420 175 390" stroke="#7B2FBE" stroke-width="5" fill="none" opacity="0.8"/>
+          <path d="M175 390 Q155 360 130 340" stroke="#FF3008" stroke-width="4" fill="none" opacity="0.8" stroke-dasharray="6 3"/>
+          <path d="M130 340 Q160 310 200 280 Q230 260 260 230" stroke="#00A651" stroke-width="4" fill="none" opacity="0.8" stroke-dasharray="6 3"/>
+          <path d="M260 230 Q280 200 300 170 Q320 130 340 80" stroke="#7B2FBE" stroke-width="5" fill="none" opacity="0.8"/>
+        </svg>
+        <div class="marker" style="top:440px;left:145px">
+          <div class="dot current" style="width:22px;height:22px;box-shadow:0 0 0 6px rgba(0,112,224,0.2),0 2px 8px rgba(0,0,0,0.2)"></div>
+        </div>
+        <div class="marker" style="top:325px;left:115px">
+          <div class="dot store"></div>
+          <div class="label" style="background:var(--dd-red);color:white">Chipotle</div>
+        </div>
+        <div class="marker" style="top:215px;left:245px">
+          <div class="dot dropoff"></div>
+          <div class="label" style="background:var(--dd-green);color:white">Drop-off</div>
+        </div>
+        <div class="marker" style="top:60px;left:320px">
+          <div class="dot destination"></div>
+          <div class="label">Home</div>
+        </div>
+        <div class="delivery-status">
+          <div class="status-chip" style="background:var(--dd-orange)">
+            &#x1F514;&nbsp; Order match found along your route!
+          </div>
+        </div>
+        <div class="order-card">
+          <div class="route-badge">&#x2714; On your route &bull; adds ~8 min</div>
+          <div class="order-header">
+            <div class="store-avatar">&#x1F32F;</div>
+            <div class="store-info">
+              <div class="name">Chipotle Mexican Grill</div>
+              <div class="detail">0.4 mi off route &bull; ~3 min wait</div>
+            </div>
+          </div>
+          <div class="order-metrics">
+            <div class="metric-chip pay">
+              <div class="metric-value">$8.50</div>
+              <div class="metric-label">Payout</div>
+            </div>
+            <div class="metric-chip time">
+              <div class="metric-value">+8 min</div>
+              <div class="metric-label">Added time</div>
+            </div>
+            <div class="metric-chip dist">
+              <div class="metric-value">2.1 mi</div>
+              <div class="metric-label">Total</div>
+            </div>
+          </div>
+          <div class="order-actions">
+            <button class="cta-btn skip-btn">Skip</button>
+            <button class="cta-btn green">&#x2714; Accept</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="desc-panel">
+    <h3>The magic moment</h3>
+    <p>An order comes in that fits the Dasher's route and time budget. The map shows the detour: current position &rarr; <span style="color:var(--dd-red)">store pickup</span> &rarr; <span style="color:var(--dd-green)">customer drop-off</span> &rarr; back to route.</p>
+    <p>The order card leads with what matters most: <strong>"On your route &bull; adds ~8 min"</strong>. Then pay, time added, and distance. The Dasher can see at a glance whether this detour is worth it.</p>
+    <p>"Skip" doesn't end TravelDash &mdash; the system keeps scanning for the next match. Zero pressure.</p>
+    <div class="design-note">DESIGN NOTE: The "+8 min added time" is the key differentiator from a normal offer. In standard Offer Mode you see pay/distance/items. In TravelDash you see pay/time-added/distance because the question isn't "is this a good delivery?" &mdash; it's "is this worth the detour?"</div>
+    <div class="design-note" style="margin-top:8px">RISK: Store wait time estimation is the killer variable. "~3 min wait" must be conservative. A Chipotle at noon might actually be 15 min. If the estimate is wrong once, trust in the feature dies.</div>
+  </div>
+</div>
+
+<!-- FLOW 5: DELIVERING -->
+<div class="stage flow-section" id="flow-delivering">
+  <div class="phone-wrap">
+    <div class="phone-label">Active Delivery + Route</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="status-bar light"><span>9:52</span><span></span></div>
+      <div class="screen">
+        <div class="map-bg" style="background:#D5D0CA">
+          <div class="map-road h" style="top:250px;left:0;width:100%"></div>
+          <div class="map-road h" style="top:400px;left:0;width:100%"></div>
+          <div class="map-road v" style="top:0;left:160px;height:100%"></div>
+          <div class="map-road v" style="top:0;left:300px;height:100%"></div>
+        </div>
+        <svg style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:10" viewBox="0 0 375 812">
+          <path d="M180 380 Q200 340 220 300 Q240 270 260 240" stroke="#00A651" stroke-width="5" fill="none" opacity="0.9"/>
+          <path d="M260 240 Q280 200 300 170 Q320 130 340 90" stroke="#7B2FBE" stroke-width="4" fill="none" opacity="0.5" stroke-dasharray="6 4"/>
+        </svg>
+        <div class="marker" style="top:365px;left:165px">
+          <div class="dot current" style="width:22px;height:22px;box-shadow:0 0 0 6px rgba(0,166,81,0.2),0 2px 8px rgba(0,0,0,0.2);background:var(--dd-green)"></div>
+        </div>
+        <div class="marker" style="top:225px;left:245px">
+          <div class="dot dropoff"></div>
+          <div class="label" style="background:var(--dd-green);color:white">Sarah M.</div>
+        </div>
+        <div class="marker" style="top:70px;left:320px">
+          <div class="dot destination" style="opacity:0.5"></div>
+          <div class="label" style="opacity:0.6">Home</div>
+        </div>
+        <div class="delivery-status">
+          <div class="status-chip" style="background:var(--dd-green)">
+            &#x1F4E6;&nbsp; Delivering to Sarah M. &bull; 4 min
+          </div>
+        </div>
+        <div class="bottom-sheet" style="height: 240px">
+          <div class="sheet-handle"></div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <div style="width:40px;height:40px;border-radius:10px;background:var(--dd-green-light);display:flex;align-items:center;justify-content:center;font-size:18px">&#x1F4CD;</div>
+            <div>
+              <div style="font-size:14px;font-weight:700;color:var(--dd-black)">Drop off at 456 Elm Ave</div>
+              <div style="font-size:12px;color:var(--dd-gray-500)">Leave at door &bull; "Please don't ring bell"</div>
+            </div>
+          </div>
+          <div style="background:var(--travel-purple-light);border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:8px;margin-bottom:14px">
+            <div style="font-size:16px">&#x1F697;</div>
+            <div style="font-size:12px;color:var(--travel-purple);font-weight:600">Back on route to Home in ~3 min after drop-off</div>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button class="cta-btn green" style="flex:1;padding:13px;font-size:14px">&#x2714; Complete delivery</button>
+          </div>
+          <div style="text-align:center;margin-top:10px">
+            <span style="font-size:11px;color:var(--dd-gray-500)">Having an issue?&nbsp;</span>
+            <span style="font-size:11px;color:var(--dd-red);font-weight:600;cursor:pointer">Get help</span>
+          </div>
+        </div>
+        <div class="tab-bar" style="z-index:40">
+          <div class="tab-item active"><span class="tab-icon">&#x1F3E0;</span>Home</div>
+          <div class="tab-item"><span class="tab-icon">&#x1F4B0;</span>Earnings</div>
+          <div class="tab-item"><span class="tab-icon">&#x2B50;</span>Ratings</div>
+          <div class="tab-item"><span class="tab-icon">&#x1F464;</span>Account</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="desc-panel">
+    <h3>Delivery + route awareness</h3>
+    <p>The delivery screen looks like a standard delivery &mdash; same drop-off instructions, same complete button. But it adds one crucial element: <strong>"Back on route to Home in ~3 min after drop-off."</strong></p>
+    <p>This reminds the Dasher they're still going somewhere. The delivery is a stop along the way, not a detour into the unknown. The green route line shows the path to the customer, and the faded purple line shows how they'll rejoin their original route.</p>
+    <div class="design-note">DESIGN NOTE: After completing this delivery, the system can either (a) resume scanning for the next match, or (b) show a "Continue to Home" confirmation if they're close to destination. The "just one more" problem means we should default to asking rather than auto-scanning.</div>
+  </div>
+</div>
+
+<!-- FLOW 6: TRIP SUMMARY -->
+<div class="stage flow-section" id="flow-summary">
+  <div class="phone-wrap">
+    <div class="phone-label">Trip Complete</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="status-bar"><span>10:28</span><span></span></div>
+      <div class="screen">
+        <div class="summary-screen">
+          <div class="summary-header">
+            <div class="check">&#x2714;&#xFE0F;</div>
+            <h2>You're home!</h2>
+            <p>TravelDash trip complete &bull; 47 min drive</p>
+          </div>
+          <div class="summary-stats">
+            <div class="stat-card earned">
+              <div class="stat-value">$15.75</div>
+              <div class="stat-label">Earned</div>
+            </div>
+            <div class="stat-card deliveries">
+              <div class="stat-value">2</div>
+              <div class="stat-label">Deliveries</div>
+            </div>
+            <div class="stat-card time-saved">
+              <div class="stat-value">0 mi</div>
+              <div class="stat-label">Dead miles</div>
+            </div>
+            <div class="stat-card efficiency">
+              <div class="stat-value">$18.90</div>
+              <div class="stat-label">/hr effective</div>
+            </div>
+          </div>
+          <div class="summary-detail">
+            <div style="font-size:12px;font-weight:700;color:var(--dd-black);margin-bottom:8px">Trip breakdown</div>
+            <div class="detail-row">
+              <span>Original drive time</span>
+              <span class="val">42 min</span>
+            </div>
+            <div class="detail-row">
+              <span>Time added by deliveries</span>
+              <span class="val" style="color:var(--travel-purple)">+15 min</span>
+            </div>
+            <div class="detail-row">
+              <span>Actual total trip</span>
+              <span class="val">57 min</span>
+            </div>
+            <div class="detail-row">
+              <span>Orders skipped</span>
+              <span class="val">1</span>
+            </div>
+            <div class="detail-row" style="border:none">
+              <span>Accuracy vs estimate</span>
+              <span class="val" style="color:var(--dd-green)">&#x2714; Within 2 min</span>
+            </div>
+          </div>
+          <div class="summary-cta">
+            <button class="cta-btn dark">Done</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="desc-panel">
+    <h3>The payoff screen</h3>
+    <p>When the Dasher arrives at their destination, TravelDash shows what they earned along the way. The key metrics reinforce the value proposition:</p>
+    <p><strong>"0 dead miles"</strong> &mdash; every mile was either going home or earning money. No driving to a zone, no wasted trips.</p>
+    <p><strong>"$18.90/hr effective"</strong> &mdash; even though per-delivery pay was normal, the effective hourly rate is high because there were zero wasted miles. This is the economic reframe.</p>
+    <p><strong>"Accuracy vs estimate: Within 2 min"</strong> &mdash; building trust in the system's predictions. If this is consistently accurate, Dashers will keep using TravelDash.</p>
+    <div class="design-note">DESIGN NOTE: This screen subtly normalizes "Orders skipped: 1" &mdash; reinforcing that skipping is fine, there's no penalty, and TravelDash is truly zero-pressure.</div>
+    <div class="design-note" style="margin-top:8px">FUTURE: Add "Would you use TravelDash again?" 1-tap feedback for product iteration.</div>
+  </div>
+</div>
+
+<script>
+function showFlow(id, btn) {
+  document.querySelectorAll('.flow-section').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.flow-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById('flow-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
